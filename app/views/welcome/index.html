@@ -2,6 +2,15 @@
 <meta charset="utf-8">
 <style>
 
+body {
+  font: 10px sans-serif;
+}
+
+p {
+  font: 12px sans-serif;
+  width: 800px;
+}
+
 .node {
   stroke: #fff;
   stroke-width: 1.5px;
@@ -14,17 +23,27 @@
 
 </style>
 <body>
+  <h1>Dolphin Socialization Graph</h1>
+  <p>
+    This chart shows the socialization associations between 62 dolphins in a community living off Doubtful Sound, New Zealand.
+    The data for the chart is from the UC Irvine
+    <a href="https://networkdata.ics.uci.edu/data.php?id=6" target="_blank">Network Data Repository</a>.
+    I manually converted the data from GML to JSON to read into <a href="https://d3js.org/">d3.js</a>
+  </p>
+  <p>
+    Each circle represents an individual dolphin.  The radius is based on the number of interactions.  Hovering over the circle shows the dolphin's name
+  </p>
 
 <script>
 
-var width = 1024,
-    height = 768;
+var width = 900,
+    height = 900;
 
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
     .charge(-500)
-    .linkDistance(35)
+    .linkDistance(40)
     .size([width, height]);
 
 var svg = d3.select("body").append("svg")
